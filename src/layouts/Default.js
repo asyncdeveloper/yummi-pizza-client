@@ -6,7 +6,8 @@ import Footer from "../components/common/Footer";
 export const DefaultLayout = ({ children, errorMessage }) => (
     <div style={{
         position: 'relative',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        paddingBottom: '100px'
     }}>
         <MainNavbar />
 
