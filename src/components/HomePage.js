@@ -1,32 +1,19 @@
 import React, {Component} from "react";
 import {Col, Container, Row} from "shards-react";
 import {PizzaCard} from "./PizzaCard";
-import API from '../config/API';
-import {GET_ALL_MENU} from "../config/apiUrls";
 import SpinnerButton from "./common/SpinnerButton";
+import {connect} from "react-redux";
+import {fetchMenu} from "../redux/home/home.actions";
 
-
-export default class HomePage extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            'menu': [],
-            'isLoading' : true,
-        }
-    }
+export class HomePage extends Component {
 
     async componentDidMount() {
-        const response = await API.get(GET_ALL_MENU);
-        const data = response.data.data;
-
-        this.setState({ menu: data, isLoading: false });
+        this.props.fetchMenu();
     }
 
     render() {
-        const menu = this.state.menu;
-        const loading = this.state.isLoading;
+        const { menu, isLoading } = this.props;
+
         return (
             <Container fluid className="px-4">
                 <Row className="mt-2">
@@ -34,7 +21,7 @@ export default class HomePage extends Component {
                         <h3 className="header-text text-center">Choose Pizza From Menu</h3>
                     </Col>
                 </Row>
-                {   loading ? <SpinnerButton />
+                { isLoading ? <SpinnerButton />
                     : <Row className="mt-2" style={{ display: 'flex', flexWrap: 'wrap' }}>
                         { menu.map( (pizza) => (
                             <Col key={pizza.id} className="mt-5" style={{ display: 'flex', flexDirection: 'wrap' }}>
@@ -47,3 +34,18 @@ export default class HomePage extends Component {
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        menu: state.home.menu,
+        isLoading: state.home.isLoading
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchMenu: () =>{ dispatch(fetchMenu()) }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
