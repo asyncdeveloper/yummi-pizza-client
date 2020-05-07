@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, CardBody, CardImg, CardTitle} from "shards-react";
+import {Badge, Card, CardBody, CardImg, CardTitle} from "shards-react";
 
 export const PizzaCard = ({ name, description, price }) => {
     return (
@@ -8,7 +8,7 @@ export const PizzaCard = ({ name, description, price }) => {
             <CardBody>
                 <CardTitle>{name}</CardTitle>
                 <p>{description}</p>
-                <Button>{price}</Button>
+                <Badge>${ price }</Badge>
             </CardBody>
         </Card>
     );
