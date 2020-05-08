@@ -16,7 +16,11 @@ describe('<HomePage />', () => {
       ],
       'isLoading' : false,
       errorMessage: null,
-      fetchMenu: () => {}
+      cart: [],
+      inCart: [],
+      fetchMenu: () => {},
+      addItemToCart: id => {},
+      removeItemFromCart: id => {},
     };
     wrapper = mount(<HomePage {...props} />);
   });

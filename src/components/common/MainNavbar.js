@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink} from "shards-react";
+import {Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem} from "shards-react";
 
 import routes from "../../routes";
+import {Link} from "react-router-dom";
 
 class MainNavbar extends Component {
 
@@ -23,9 +24,9 @@ class MainNavbar extends Component {
         const headerLinks = routes.map((item, idx) => {
             return (
                 <NavItem key={idx}>
-                    <NavLink href={item.path}>
+                    <Link to={item.path} className="nav-link">
                         {item.alias}
-                    </NavLink>
+                    </Link>
                 </NavItem>
             )
         });
