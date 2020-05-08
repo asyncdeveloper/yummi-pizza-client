@@ -4,6 +4,7 @@ import {PizzaCard} from "./PizzaCard";
 import SpinnerButton from "./common/SpinnerButton";
 import {connect} from "react-redux";
 import {fetchMenu} from "../redux/home/home.actions";
+import {addItemToCart, removeItemFromCart} from "../redux/cart/cart.actions";
 
 export class HomePage extends Component {
 
@@ -11,8 +12,18 @@ export class HomePage extends Component {
         this.props.fetchMenu();
     }
 
+    addToCart = (menuId) => {
+        this.props.addItemToCart(menuId);
+    };
+
+    removeFromCart = (menuId) => {
+        this.props.removeItemFromCart(menuId);
+    };
+
     render() {
-        const { menu, isLoading } = this.props;
+        const { menu, isLoading, cart, inCart } = this.props;
+
+        console.log(cart, inCart);
 
         return (
             <Container fluid className="px-4">
@@ -25,7 +36,11 @@ export class HomePage extends Component {
                     : <Row className="mt-2" style={{ display: 'flex', flexWrap: 'wrap' }}>
                         { menu.map( (pizza) => (
                             <Col key={pizza.id} className="mt-5" style={{ display: 'flex', flexDirection: 'wrap' }}>
-                                <PizzaCard {...pizza} />
+                                <PizzaCard {...pizza}
+                                   addToCart={ this.addToCart }
+                                   removeFromCart = { this.removeFromCart }
+                                   inCart={ inCart.includes(pizza.id) }
+                                />
                             </Col>
                         ))}
                     </Row>
@@ -38,13 +53,17 @@ export class HomePage extends Component {
 const mapStateToProps = state => {
     return {
         menu: state.home.menu,
-        isLoading: state.home.isLoading
+        isLoading: state.home.isLoading,
+        cart: state.cart.items,
+        inCart: state.cart.inCart
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchMenu: () =>{ dispatch(fetchMenu()) }
+        fetchMenu: () => { dispatch(fetchMenu()) },
+        addItemToCart: id => { dispatch(addItemToCart(id)) },
+        removeItemFromCart: id => { dispatch(removeItemFromCart(id)) }
     }
 };
 

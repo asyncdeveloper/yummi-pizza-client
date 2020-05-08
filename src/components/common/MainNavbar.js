@@ -20,7 +20,6 @@ class MainNavbar extends Component {
     };
 
     render() {
-        const { isLoggedIn } = this.props;
         const headerLinks = routes.map((item, idx) => {
             return (
                 <NavItem key={idx}>
