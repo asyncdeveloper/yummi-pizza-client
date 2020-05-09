@@ -31,6 +31,7 @@ class MainNavbar extends Component {
                     </NavItem>
                 )
             }
+            return  null;
         });
 
         return (
