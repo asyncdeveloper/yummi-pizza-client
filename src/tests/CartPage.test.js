@@ -34,10 +34,14 @@ describe('<CartPage />', () => {
     });
 
     it('renders show cart items total price text', () => {
+        const deliveryPriceText = wrapper.find('.delivery-cost-text');
         const totalPriceText = wrapper.find('.total-price-text');
 
+        expect(deliveryPriceText).toHaveLength(1);
+        expect(deliveryPriceText.text()).toEqual('Delivery Fee: $50.03');
+
         expect(totalPriceText).toHaveLength(1);
-        expect(totalPriceText.text()).toEqual('Total: $1000.55');
+        expect(totalPriceText.text()).toEqual('Total: $1050.58');
     });
 });
 

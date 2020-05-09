@@ -7,9 +7,11 @@ import {increaseItemQuantity, reduceItemQuantity, removeItemFromCart} from "../r
 
 export const CartPage = ({ cart, increaseItemQuantity, reduceItemQuantity, removeItemFromCart }) => {
 
-    const total = cart.reduce(function(prev, cur) {
+    const price = cart.reduce(function(prev, cur) {
         return Number(parseFloat(prev) + parseFloat(cur.price * cur.quantity)).toFixed(2);
     }, 0);
+    const deliveryCost = Number(price * 0.05).toFixed(2);
+    const total = Number(Number(deliveryCost)+ Number(price)).toFixed(2);
 
     return (
         <Container fluid className="px-4">
@@ -53,6 +55,7 @@ export const CartPage = ({ cart, increaseItemQuantity, reduceItemQuantity, remov
                         ? (
                             <Row>
                                 <Col lg={{ size: 12 }} className="text-center">
+                                    <h6 className="delivery-cost-text">Delivery Fee: ${deliveryCost}</h6>
                                     <h4 className="total-price-text">Total: ${total}</h4>
                                 </Col>
                                 <Col lg={{ size: 12 }} className="text-center mt-3">
