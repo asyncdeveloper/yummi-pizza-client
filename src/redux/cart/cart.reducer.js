@@ -1,4 +1,10 @@
-import {ADD_TO_CART, INCREASE_CART_ITEM_QUANTITY, REDUCE_CART_ITEM_QUANTITY, REMOVE_FROM_CART} from "./cart.types";
+import {
+    ADD_TO_CART,
+    CLEAR_CART_ITEMS,
+    INCREASE_CART_ITEM_QUANTITY,
+    REDUCE_CART_ITEM_QUANTITY,
+    REMOVE_FROM_CART
+} from "./cart.types";
 
 const initState = {
     items : [],
@@ -24,6 +30,13 @@ const cartReducer = (state = initState, action) => {
                 ...state,
                 items: [ ...action.data ]
             };
+        case CLEAR_CART_ITEMS:
+            return {
+                ...state,
+                items: [],
+                inCart: []
+            };
+
         default:
             return state;
     }

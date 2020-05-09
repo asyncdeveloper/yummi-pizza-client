@@ -5,6 +5,7 @@ import SpinnerButton from "./common/SpinnerButton";
 import {connect} from "react-redux";
 import {fetchMenu} from "../redux/home/home.actions";
 import {addItemToCart, removeItemFromCart} from "../redux/cart/cart.actions";
+import CustomAlert from "./common/CustomAlert";
 
 export class HomePage extends Component {
 
@@ -21,9 +22,7 @@ export class HomePage extends Component {
     };
 
     render() {
-        const { menu, isLoading, cart, inCart } = this.props;
-
-        console.log(cart, inCart);
+        const { menu, isLoading, inCart, errorMessage } = this.props;
 
         return (
             <Container fluid className="px-4">
@@ -31,6 +30,9 @@ export class HomePage extends Component {
                     <Col>
                         <h3 className="header-text text-center">Choose Pizza From Menu</h3>
                     </Col>
+                </Row>
+                <Row>
+                    <CustomAlert errorMessage={errorMessage} />
                 </Row>
                 { isLoading ? <SpinnerButton />
                     : <Row className="mt-2" style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -55,7 +57,8 @@ const mapStateToProps = state => {
         menu: state.home.menu,
         isLoading: state.home.isLoading,
         cart: state.cart.items,
-        inCart: state.cart.inCart
+        inCart: state.cart.inCart,
+        errorMessage: state.home.errorMessage
     };
 };
 

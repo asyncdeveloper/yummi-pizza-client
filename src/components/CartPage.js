@@ -56,7 +56,7 @@ export const CartPage = ({ cart, increaseItemQuantity, reduceItemQuantity, remov
                                     <h4 className="total-price-text">Total: ${total}</h4>
                                 </Col>
                                 <Col lg={{ size: 12 }} className="text-center mt-3">
-                                    <Link to="/">
+                                    <Link to="/order">
                                         <Button outline pill size="sm" theme="success">
                                             Place Order
                                         </Button>

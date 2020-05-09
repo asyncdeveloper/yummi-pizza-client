@@ -3,6 +3,7 @@ import DefaultLayout from "./layouts/Default";
 // Route Views
 import HomePage from "./components/HomePage";
 import CartPage from "./components/CartPage";
+import OrderPage from "./components/OrderPage";
 
 export default [
   {
@@ -10,13 +11,23 @@ export default [
     exact: true,
     layout: DefaultLayout,
     component: HomePage,
-    alias : "Home"
+    alias : "Home",
+    showInNav: true
   },
   {
     path: "/cart",
     exact: true,
     layout: DefaultLayout,
     component: CartPage,
-    alias : "Cart"
+    alias : "Cart",
+    showInNav: true
+  },
+  {
+    path: "/order",
+    exact: true,
+    layout: DefaultLayout,
+    component: OrderPage,
+    alias : "Order",
+    showInNav: false
   },
 ];

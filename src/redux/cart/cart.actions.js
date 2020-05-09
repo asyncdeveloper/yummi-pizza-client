@@ -1,6 +1,5 @@
 import {ADD_TO_CART, INCREASE_CART_ITEM_QUANTITY, REDUCE_CART_ITEM_QUANTITY, REMOVE_FROM_CART} from "./cart.types";
 
-
 export const addItemToCart = menuId => {
     return async (dispatch, getState) => {
         const menus = getState().home.menu;

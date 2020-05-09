@@ -22,13 +22,15 @@ class MainNavbar extends Component {
 
     render() {
         const headerLinks = routes.map((item, idx) => {
-            return (
-                <NavItem key={idx}>
-                    <Link to={item.path} className="nav-link">
-                        {item.alias}
-                    </Link>
-                </NavItem>
-            )
+            if(item.showInNav) {
+                return (
+                    <NavItem key={idx}>
+                        <Link to={item.path} className="nav-link">
+                            {item.alias}
+                        </Link>
+                    </NavItem>
+                )
+            }
         });
 
         return (
