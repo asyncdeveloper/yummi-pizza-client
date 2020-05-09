@@ -23,7 +23,7 @@ export const CartPage = ({ cart, increaseItemQuantity, reduceItemQuantity, remov
                 { cart.map( (item) => (
                         <Col key={item.id} lg={{ size: 8, offset: 2 }} className="pt-2 pb-2">
                             <ListGroupItem style={{ display: 'flex' }}>
-                                <CardImg src="https://place-hold.it/300x200" style={{ float: 'left' }} />
+                                <CardImg src={item.image_url} style={{ float: 'left' }} />
                                 <ListGroupItemText className="pl-2">
                                     <strong> Name: </strong> { item.name }
                                     <br /><br />
