@@ -14,7 +14,8 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "shards-react": "^1.0.3"
+    "shards-react": "^1.0.3",
+    "react-image-appear": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

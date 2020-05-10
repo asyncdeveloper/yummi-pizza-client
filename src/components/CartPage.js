@@ -1,9 +1,10 @@
 import React from "react";
-import {Alert, Button, CardImg, Col, Container, ListGroup, ListGroupItem, ListGroupItemText, Row} from "shards-react";
+import {Alert, Button, Col, Container, ListGroup, ListGroupItem, ListGroupItemText, Row} from "shards-react";
 
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {increaseItemQuantity, reduceItemQuantity, removeItemFromCart} from "../redux/cart/cart.actions";
+import ReactImageAppear from "react-image-appear";
 
 export const CartPage = ({ cart, increaseItemQuantity, reduceItemQuantity, removeItemFromCart }) => {
 
@@ -25,7 +26,10 @@ export const CartPage = ({ cart, increaseItemQuantity, reduceItemQuantity, remov
                 { cart.map( (item) => (
                         <Col key={item.id} lg={{ size: 8, offset: 2 }} className="pt-2 pb-2">
                             <ListGroupItem style={{ display: 'flex' }}>
-                                <CardImg src={item.image_url} style={{ float: 'left' }} />
+                                <ReactImageAppear style={{ float: 'left' }}
+                                    src={item.image_url} animation="blurIn"
+                                    animationDuration="1s" showLoader={false}
+                                />
                                 <ListGroupItemText className="pl-2">
                                     <strong> Name: </strong> { item.name }
                                     <br /><br />

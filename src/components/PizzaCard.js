@@ -1,5 +1,6 @@
 import React from "react";
-import {Badge, Button, Card, CardBody, CardHeader, CardImg} from "shards-react";
+import {Badge, Button, Card, CardBody, CardHeader} from "shards-react";
+import ReactImageAppear from "react-image-appear";
 
 export const PizzaCard = (props) => {
     const { id, name, description, price, image_url, inCart } = props;
@@ -7,7 +8,7 @@ export const PizzaCard = (props) => {
     return (
         <Card className="box" style={{maxWidth: "300px"}}>
             <CardHeader> {name} </CardHeader>
-            <CardImg src={image_url} />
+            <ReactImageAppear src={image_url} animation="blurIn" animationDuration="1s" showLoader={false} />
             <CardBody>
                 <p>{description}</p>
                 <Badge className="mt-1">${ price }</Badge>
